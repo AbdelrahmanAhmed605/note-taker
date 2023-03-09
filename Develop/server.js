@@ -10,7 +10,7 @@ const notes = require("./db/db.json")
 const app = express()
 // Middleware for parsing json
 app.use(express.json());
-// Add a static middleware for serving assets in the public folder
+// Static middleware for serving assets in the public folder
 app.use(express.static('public'));
 
 // Serve the static notes.html file when the client requestes to GET the "/notes" route
@@ -23,7 +23,7 @@ app.get("/api/notes", (req, res) =>
     res.json(notes)
 );
 
-// Handle all other GET requests, that are not specified above, by sending the index.html file
+// Handle all other GET requests, that are not specified above, by serving the index.html file
 app.get("*", (req, res) =>
   res.sendFile(path.join(__dirname, "/public/index.html"))
 );
