@@ -7,8 +7,17 @@
     "start": "node Develop/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbdelrahmanAhmed605/note-taker.git"
+  },
+  "keywords": [],
   "author": "Abdelrahman Ahmed",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AbdelrahmanAhmed605/note-taker/issues"
+  },
+  "homepage": "https://github.com/AbdelrahmanAhmed605/note-taker#readme",
   "dependencies": {
     "express": "^4.18.2",
     "uuid": "^9.0.0"
