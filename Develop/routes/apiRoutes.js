@@ -1,4 +1,5 @@
 const notes = require("express").Router();
+const path = require("path");
 const {
   readFromFile,
   readAndAppend,
@@ -10,7 +11,7 @@ const notes_data = require("../db/db.json");
 // GET Route for retrieving all the notes
 notes.get("/notes", (req, res) => {
   console.info(`\n${req.method} request received for notes\n`);
-  readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data))); //Reads data from database and sends it as a JSON response with the parsed JSON data
+  readFromFile(path.join(__dirname,"../db/db.json")).then((data) => res.json(JSON.parse(data))); //Reads data from database and sends it as a JSON response with the parsed JSON data
 });
 
 // POST Route to add a new note
@@ -29,7 +30,7 @@ notes.post("/notes", (req, res) => {
       id: uuid(),
     };
 
-    readAndAppend(newNote, "./db/db.json"); //Append the note into the database file
+    readAndAppend(newNote, path.join(__dirname,"../db/db.json")); //Append the note into the database file
     res.json(`Note added successfully`); // Confirm to the client that the POST request was successful
   } else {
     res.status(400).json({ error: "Missing required fields" });
@@ -41,7 +42,7 @@ notes.delete("/notes/:id", (req, res) => {
   console.info(`${req.method} request received to remove a note`);
 
   if (req.params.id) {
-    readFromFile("./db/db.json").then((data) => {
+    readFromFile(path.join(__dirname,"../db/db.json")).then((data) => {
       const note_data = JSON.parse(data);
       //find the note to delete by its id
       const delete_note = note_data.find((note) => note.id === req.params.id);
@@ -58,7 +59,7 @@ notes.delete("/notes/:id", (req, res) => {
       note_data.splice(index_del_note, 1);
 
       //rewrites the updated array with the removed note to the database json file
-      writeToFile("./db/db.json", note_data);
+      writeToFile(path.join(__dirname,"../db/db.json"), note_data);
       // send success response with the deleted note
       res.json({
         message: `Note removed successfully`,

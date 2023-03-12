@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(express.json()); // Middleware for parsing json
-app.use(express.static("public")); // Static middleware for serving assets in the public folder
+app.use(express.static(path.join(__dirname, "public"))); // Static middleware for serving assets in the public folder
 app.use("/api", api); // set up the api Router as middleware which looks for routes beginning with /api
 app.use("", html); // set up the html Router as middleware to serve up the html files
 

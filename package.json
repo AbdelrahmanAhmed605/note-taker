@@ -4,7 +4,7 @@
   "description": "Application that uses an Express.js back end to save and retrieve a user's notes data to and from a JSON file",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node ./Develop/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
