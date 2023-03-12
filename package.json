@@ -2,7 +2,7 @@
   "name": "note-taker",
   "version": "1.0.0",
   "description": "Application that uses an Express.js back end to save and retrieve a user's notes data to and from a JSON file",
-  "main": "server.js",
+  "main": "./Develop/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
